@@ -1,0 +1,484 @@
+/* Core Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+.container {
+    padding: 2rem;
+    text-align: left;
+    max-width: 1200px; /* Added max-width for consistency */
+    margin: 0 auto; /* Center the container */
+}
+
+.btn {
+    background-color: #ff6f61;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease; /* Added smooth transition */
+}
+
+.btn:hover {
+    background-color: #e55353; /* Darker shade on hover */
+}
+
+/* Header Section */
+.header {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+.header-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('C:/Users/TinasheHando/Documents/Agapao Mission/Donations[World].jpeg') no-repeat center center/cover; /* Using placehold.co as example */
+    filter: blur(2px);
+    z-index: -1;
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
+.header-content {
+    z-index: 1;
+    max-width: 80%; /* Added max-width for better readability */
+}
+
+.header-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.header-content p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+/* Navbar Section */
+.navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+}
+
+.navbar-nav {
+    list-style: none;
+    display: flex;
+}
+
+.navbar-nav li {
+    margin-left: 1rem;
+}
+
+.navbar-nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease; /* Added smooth transition */
+}
+
+.navbar-nav a:hover {
+    color: #ffdb58; /* Example hover color */
+}
+
+/* Calendar Section */
+#calendar {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.calendar-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.calendar-controls button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #333;
+    transition: color 0.2s ease; /* Added smooth transition */
+}
+
+.calendar-controls button:hover {
+    color: #007bff; /* Example hover color */
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.5rem;
+    margin-top: 1rem; /* Added margin-top for spacing */
+}
+
+.calendar-grid-item {
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease; /* Added smooth transition */
+}
+
+.calendar-grid-item:hover {
+    background-color: #f4f4f4;
+}
+
+.calendar-grid-item.header {
+    font-weight: bold;
+    background-color: #f0f0f0; /* Added background color for header */
+    cursor: default; /* Remove cursor style for header */
+}
+
+.calendar-grid-item.holiday {
+    background-color: #ff6f61;
+    color: white;
+    font-weight: bold;
+}
+
+.calendar-grid-item.empty {
+    background-color: #f9f9f9;
+    border: none;
+    cursor: default;
+}
+
+/* Campaigns Section */
+#campaigns {
+    text-align: center; /* Center the heading */
+}
+
+#campaigns h2{
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+}
+
+.campaign-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem; /* Increased gap for better spacing */
+    margin-top: 1rem;
+}
+
+.campaign-card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    text-align: left; /* Changed to left alignment */
+    background-color: white; /* Added background color */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Added subtle shadow */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Added smooth transition */
+}
+
+.campaign-card:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Increased shadow on hover */
+}
+
+
+.campaign-card h3 {
+    margin: 1rem 0 0.5rem;
+    font-size: 1.5rem;
+    color: #2c3e50; /* Darker heading color */
+}
+
+.campaign-card p {
+    padding: 0 1rem 1rem;
+    color: #555;
+    line-height: 1.7; /* Improved line height for readability */
+}
+
+/* Slideshow Container */
+.slideshow {
+    position: relative;
+    height: 200px;
+    /* Fixed height for slideshow */
+    overflow: hidden;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.slide.active {
+    opacity: 1;
+}
+/* Testimonials Section */
+#testimonials {
+    text-align: center;
+    background-color: #f8f8f8; /* Light background for section */
+    padding: 3rem 0;
+}
+
+#testimonials h2{
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.testimonial-slider {
+    position: relative;
+    max-width: 80%; /* Increased max-width for larger screens */
+    margin: 0 auto;
+    text-align: center;
+}
+
+.testimonial {
+    display: none;
+    text-align: center;
+    font-size: 1.1rem;
+    line-height: 1.8; /* Improved line height */
+    color: #666; /* Slightly darker text */
+}
+
+.testimonial.active {
+    display: block;
+}
+
+.testimonial-slider button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem; /* Increased padding */
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease; /* Added transition */
+}
+
+.testimonial-slider button:hover {
+    background-color: rgba(0, 0, 0, 0.7); /* Slightly darker on hover */
+}
+
+
+.testimonial-slider .prev {
+    left: -3rem;
+}
+
+.testimonial-slider .next {
+    right: -3rem;
+}
+
+/* Donation Section */
+#donate {
+    text-align: center;
+    padding: 3rem 0;
+}
+
+#donate h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+#donate p{
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+#donation-form {
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+#donation-form label {
+    display: block;
+    margin: 0.5rem 0 0.25rem;
+    color: #333;
+    font-weight: 600;
+}
+
+#donation-form input {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+#donation-form input:focus{
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.payment-methods {
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.payment-methods label {
+    margin-right: 1rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.payment-methods label img{
+    height: 2rem;
+}
+
+.hidden {
+    display: none;
+}
+
+.payment-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.payment-option:hover {
+    border-color: #f59e0b;
+    background-color: #fef08a;
+}
+
+.payment-option.selected {
+    background-color: #fef08a;
+    border-color: #f59e0b;
+    box-shadow: 0 0 5px #f59e0b;
+}
+
+
+/* Footer Section */
+.footer {
+    background-color: #333;
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.footer p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.footer-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.footer-links li {
+    margin: 0 1rem;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: 1.1rem;
+}
+
+.footer-links a:hover {
+    color: #ffdb58;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 768px) {
+    .navbar-nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar-nav li {
+        margin-left: 0;
+        margin-top: 1rem;
+    }
+
+    .header-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .header-content p {
+        font-size: 1.2rem;
+    }
+
+    .campaign-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .testimonial-slider .prev {
+        left: 0;
+        top: 105%;
+        transform: translateY(0);
+    }
+
+    .testimonial-slider .next {
+        right: 0;
+        top: 105%;
+        transform: translateY(0);
+    }
+
+    .navbar {
+        flex-direction: column;
+    }
+
+    .navbar-brand {
+        margin-bottom: 1rem;
+    }
+}

@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agapao Mission</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom CSS for animations and more complex elements */
+        .slide-in {
+            animation: slideIn 0.6s ease-out forwards;
+            opacity: 0;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(-50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .slide-in-right {
+            animation: slideInRight 0.6s ease-out forwards;
+            opacity: 0;
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease-in-out forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-in-out forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .hero-image.active {
+            opacity: 1;
+        }
+
+        .payment-option.selected {
+            background-color: rgba(220, 38, 38, 0.2);
+            /* Tailwind red-500 with opacity */
+            border-color: rgb(220, 38, 38);
+            /* Tailwind red-500 */
+            color: rgb(252, 211, 77);
+            /* Tailwind red-100 */
+        }
+
+        .payment-option:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            /* White with opacity */
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Ensure images don't overflow their container */
+        img {
+            max-width: 100%;
+            /* Important: Prevent images from being too large */
+            height: auto;
+        }
+
+        .payment-option img {
+            height: 2rem;
+            /* Adjust as needed, but ensure it's controlled */
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-950 font-montserrat">
+    <header class="relative h-screen flex items-center justify-center overflow-hidden" id="home">
+        <img src="happy together.jpeg" alt="Agapao Mission Hero 1" class="hero-image active">
+        <img src="ZSE[2018].jpeg" alt="Agapao Mission Hero 2" class="hero-image">
+        <img src="team[in villages].jpeg" alt="Agapao Mission Hero 3" class="hero-image">
+        <img src="Volunteer in Kenya with IVHQ - Lowest Fees & #1 Rated Projects.jpeg" alt="Agapao Mission Hero 4"
+            class="hero-image">
+        <img src="Donations[World].jpeg" alt="Agapao Mission Hero 5" class="hero-image">
+
+        <div class="absolute inset-0 bg-gradient-to-b from-black/50 to-black/80"></div>
+
+        <nav class="absolute top-0 left-0 w-full bg-black/50 backdrop-blur-md z-20">
+            <div class="container mx-auto px-4 md:px-6 py-4 flex items-center justify-between">
+                <span class="text-2xl font-bold text-white">Agapao Mission</span>
+                <div class="hidden md:flex gap-6">
+                    <a href="#home"
+                        class="text-gray-300 hover:text-white hover:bg-transparent px-0 font-medium">Home</a>
+                    <a href="#about" class="text-gray-300 hover:text-white hover:bg-transparent px-0 font-medium">About
+                        Us</a>
+                    <a href="#programs" class="text-gray-300 hover:text-white hover:bg-transparent px-0 font-medium">Our
+                        Programs</a>
+                    <a href="#donate"
+                        class="text-gray-300 hover:text-white hover:bg-transparent px-0 font-medium">Donate</a>
+                    <a href="#contact"
+                        class="text-gray-300 hover:text-white hover:bg-transparent px-0 font-medium">Contact Us</a>
+                    <a href="#team" class="text-gray-300 hover:text-white hover:bg-transparent px-0 font-medium">Our
+                        Team</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-300 hover:text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div id="mobile-menu" class="hidden bg-black/70 backdrop-blur-md py-4">
+                <div class="flex flex-col items-center gap-4">
+                    <a href="#home" class="text-gray-300 hover:text-white px-4 font-medium w-full text-center">Home</a>
+                    <a href="#about" class="text-gray-300 hover:text-white px-4 font-medium w-full text-center">About
+                        Us</a>
+                    <a href="#programs" class="text-gray-300 hover:text-white px-4 font-medium w-full text-center">Our
+                        Programs</a>
+                    <a href="#donate"
+                        class="text-gray-300 hover:text-white px-4 font-medium w-full text-center">Donate</a>
+                    <a href="#contact"
+                        class="text-gray-300 hover:text-white px-4 font-medium w-full text-center">Contact Us</a>
+                    <a href="#team" class="text-gray-300 hover:text-white px-4 font-medium w-full text-center">Our
+                        Team</a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="relative z-10 text-center py-24 md:py-40">
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-4 fade-in">Agapao Mission</h1>
+            <p class="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto fade-in" style="animation-delay: 0.3s;">
+                Providing humanitarian aid and support across Africa.
+                Headquartered in West Virginia, USA.
+            </p>
+            <div style="animation-delay: 0.5s;" class="fade-in-up">
+                <a href="#donate"
+                    class="bg-red-600 hover:bg-red-700 text-white font-semibold px-8 py-3 rounded-full flex items-center gap-2 text-lg">
+                    Donate Now <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                        class="w-5 h-5">
+                        <path
+                            d="M21.032 4.132a6.791 6.791 0 0 0-9.622-9.622C4.449-.87 2.031 1.548 2.031 4.755c0 6.782 8.948 12.287 10.969 12.287 2.021 0 10.969-5.505 10.969-12.287 0-3.207-2.418-5.625-5.836-5.836Z" />
+                        <path d="M12 11.375a1.375 1.375 0 1 0 0-2.75 1.375 1.375 0 0 0 0 2.75Z" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="py-16 md:py-24 bg-gray-900" id="about">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="relative slide-in">
+                    <img src="https://placehold.co/600x400/EEE/31343C?text=About+Us&font=Montserrat" alt="About Us"
+                        class="w-full rounded-lg shadow-lg">
+                </div>
+                <div class="slide-in-right">
+                    <h2 class="text-3xl md:text-4xl font-semibold text-white mb-4">About Us</h2>
+                    <p class="text-gray-300 mb-6">
+                        Agapao Mission is a non-governmental organization dedicated to providing
+                        humanitarian aid and support to communities across Africa. We are committed to
+                        serving with compassion and integrity, striving to make a positive impact on the
+                        lives of those we serve.
+                    </p>
+                    <p class="text-gray-300 mb-8">
+                        Our headquarters are located in West Virginia, USA, and we work with partners
+                        and volunteers on the ground in Africa to deliver effective and sustainable
+                        programs.
+                    </p>
+                    <a href="#about"
+                        class="text-red-600 hover:bg-red-50/50 hover:text-red-700 border-red-500/50 font-semibold px-6 py-2 rounded-full flex items-center gap-2 border">
+                        Learn More <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15.375" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-gray-950">
+        <div class="container mx-auto px-4 md:px-6">
+            <h2 class="text-3xl md:text-4xl font-semibold text-white text-center mb-12">
+                Our Core Principles
+            </h2>
+            <div class="grid md:grid-cols-3 gap-12">
+                <div
+                    class="bg-white/5 backdrop-blur-md rounded-lg shadow-md p-6 flex flex-col items-center text-center border border-white/10 fade-in-up">
+                    <img src="https://placehold.co/600x400/EEE/31343C?text=Our+Mission&font=Montserrat"
+                        alt="Our Mission" class="w-full rounded-lg mb-4 h-48 object-cover">
+                    <h3 class="text-2xl font-semibold text-red-400 mb-2">Our Mission</h3>
+                    <p class="text-gray-300">
+                        To provide humanitarian aid and support to communities in Africa,
+                        empowering them to overcome challenges and build a better future.
+                    </p>
+                </div>
+                <div class="bg-white/5 backdrop-blur-md rounded-lg shadow-md p-6 flex flex-col items-center text-center border border-white/10 fade-in-up"
+                    style="animation-delay: 0.2s;">
+                    <img src="https://placehold.co/600x400/EEE/31343C?text=Our+Vision&font=Montserrat" alt="Our Vision"
+                        class="w-full rounded-lg mb-4 h-48 object-cover">
+                    <h3 class="text-2xl font-semibold text-red-400 mb-2">Our Vision</h3>
+                    <p class="text-gray-300">
+                        To see thriving and self-sufficient communities across Africa, free from
+                        poverty and injustice.
+                    </p>
+                </div>
+                <div class="bg-white/5 backdrop-blur-md rounded-lg shadow-md p-6 flex flex-col items-center text-center border border-white/10 fade-in-up"
+                    style="animation-delay: 0.4s;">
+                    <img src="Donations[World].jpeg" alt="Our Values" class="w-full rounded-lg mb-4 h-48 object-cover">
+                    <h3 class="text-2xl font-semibold text-red-400 mb-2">Our Values</h3>
+                    <ul class="list-none text-gray-300">
+                        <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                fill="currentColor" class="w-4 h-4 text-red-400">
+                                <path
+                                    d="M19.965 11.122 10.31 1.467a3.375 3.375 0 0 0-4.773 0L4.035 6.61a1.125 1.125 0 0 0-1.11 1.487v6.558a1.125 1.125 0 0 0 1.11 1.487l5.877 5.145a3.375 3.375 0 0 0 4.773 0l9.655-8.455a1.125 1.125 0 0 0 0-1.732Z" />
+                                <path d="M12 15.75a3.75 3.75 0 1 1 0-7.5 3.75 3.75 0 0 1 0 7.5Z" />
+                            </svg> Compassion</li>
+                        <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                fill="currentColor" class="w-4 h-4 text-red-400">
+                                <path
+                                    d="M19.965 11.122 10.31 1.467a3.375 3.375 0 0 0-4.773 0L4.035 6.61a1.125 1.125 0 0 0-1.11 1.487v6.558a1.125 1.125 0 0 0 1.11 1.487l5.877 5.145a3.375 3.375 0 0 0 4.773 0l9.655-8.455a1.125 1.125 0 0 0 0-1.732Z" />
+                                <path d="M12 15.75a3.75 3.75 0 1 1 0-7.5 3.75 3.75 0 0 1 0 7.5Z" />
+                            </svg> Integrity</li>
+                        <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                fill="currentColor" class="w-4 h-4 text-red-400">
+                                <path
+                                    d="M19.965 11.122 10.31 1.467a3.375 3.375 0 0 0-4.773 0L4.035 6.61a1.125 1.125 0 0 0-1.11 1.487v6.558a1.125 1.125 0 0 0 1.11 1.487l5.877 5.145a3.375 3.375 0 0 0 4.773 0l9.655-8.455a1.125 1.125 0 0 0 0-1.732Z" />
+                                <path d="M12 15.75a3.75 3.75 0 1 1 0-7.5 3.75 3.75 0 0 1 0 7.5Z" />
+                            </svg> Accountability</li>
+                        <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                fill="currentColor" class="w-4 h-4 text-red-400">
+                                <path
+                                    d="M19.965 11.122 10.31 1.467a3.375 3.375 0 0 0-4.773 0L4.035 6.61a1.125 1.125 0 0 0-1.11 1.487v6.558a1.125 1.125 0 0 0 1.11 1.487l5.877 5.145a3.375 3.375 0 0 0 4.773 0l9.655-8.455a1.125 1.125 0 0 0 0-1.732Z" />
+                                <path d="M12 15.75a3.75 3.75 0 1 1 0-7.5 3.75 3.75 0 0 1 0 7.5Z" />
+                            </svg> Collaboration</li>
+                        <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                fill="currentColor" class="w-4 h-4 text-red-400">
+                                <path
+                                    d="M19.965 11.122 10.31 1.467a3.375 3.375 0 0 0-4.773 0L4.035 6.61a1.125 1.125 0 0 0-1.11 1.487v6.558a1.125 1.125 0 0 0 1.11 1.487l5.877 5.145a3.375 3.375 0 0 0 4.773 0l9.655-8.455a1.125 1.125 0 0 0 0-1.732Z" />
+                                <path d="M12 15.75a3.75 3.75 0 1 1 0-7.5 3.75 3.75 0 0 1 0 7.5Z" />
+                            </svg> Empowerment</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-gray-900" id="programs">
+        <div class="container mx-auto px-4 md:px-6">
+            <h2 class="text-3xl md:text-4xl font-semibold text-white text-center mb-12">
+                Our Programs
+            </h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div
+                    class="bg-white/5 backdrop-blur-md rounded-lg shadow-md p-4 md:p-6 flex flex-col justify-between hover:shadow-lg transition-shadow duration-300 border border-white/10 fade-in-up">
+                    <img src="https://placehold.co/400x300/EEE/31343C?text=Programs&font=Montserrat" alt="Program 1"
+                        class="w-full rounded-lg mb-4 h-48 object-cover">
+                    <h3 class="text-xl font-semibold text-white mb-2">Education and Literacy</h3>
+                    <p class="text-gray-300 mb-4">
+                        Providing access to quality education and promoting literacy
+                        among children and adults.
+                    </p>
+                    <a href="#programs"
+                        class="text-red-600 hover:bg-red-50/50 hover:text-red-700 border-red-500/50 self-start border">Learn
+                        More</a>
+                </div>
+                <div class="bg-white/5 backdrop-blur-md rounded-lg shadow-md p-4 md:p-6 flex flex-col justify-between hover:shadow-lg transition-shadow duration-300 border border-white/10 fade-in-up"
+                    style="animation-delay: 0.2s;">
+                    <img src="https://placehold.co/400x300/EEE/31343C?text=Programs&font=Montserrat" alt="Program 2"
+                        class="w-full rounded-lg mb-4 h-48 object-cover">
+                    <h3 class="text-xl font-semibold text-white mb-2">Healthcare and Wellness</h3>
+                    <p class="text-gray-300 mb-4">
+                        Improving access to healthcare services and promoting healthy living
+                        practices in underserved communities.
+                    </p>
+                    <a href="#programs"
+                        class="text-red-600 hover:bg-red-50/50 hover:text-red-700 border-red-500/50 self-start border">Learn
+                        More</a>
+                </div>
+                <div class="bg-white/5 backdrop-blur-md rounded-lg shadow-md p-4 md:p-6 flex flex-col justify-between hover:shadow-lg transition-shadow duration-300 border border-white/10 fade-in-up"
+                    style="animation-delay: 0.4s;">
+                    <img src="https://placehold.co/400x300/EEE/31343C?text=Program"
+                        class="w-full rounded-lg mb-4 h-48 object-cover">
+                    <h3 class="text-xl font-semibold text-white mb-2">Food Security</h3>
+                    <p class="text-gray-300 mb-4">
+                        Ensuring access to nutritious food for vulnerable communities through
+                        sustainable agricultural practices and food distribution programs.
+                    </p>
+                    <a href="#programs"
+                        class="text-red-600 hover:bg-red-50/50 hover:text-red-700 border-red-500/50 self-start border">Learn
+                        More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-gray-950" id="donate">
+        <div class="container mx-auto px-4 md:px-6">
+            <h2 class="text-3xl md:text-4xl font-semibold text-white text-center mb-12">
+                Donate to Agapao Mission
+            </h2>
+            <div
+                class="max-w-2xl mx-auto bg-white/5 backdrop-blur-md rounded-lg shadow-md p-6 md:p-8 border border-white/10 fade-in-up">
+                <p class="text-gray-300 mb-6 text-center">
+                    Your donation helps us continue our mission of providing humanitarian aid across Africa.
+                    Choose your preferred payment method below:
+                </p>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                    <div
+                        class="payment-option p-4 rounded-lg border border-white/10 cursor-pointer flex flex-col items-center justify-center text-gray-300 hover:text-white transition-all">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/1200px-Visa_Inc._logo.svg.png"
+                            alt="VISA" class="h-8 ">
+                        <span>VISA</span>
+                    </div>
+                    <div
+                        class="payment-option p-4 rounded-lg border border-white/10 cursor-pointer flex flex-col items-center justify-center text-gray-300 hover:text-white transition-all">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/PayPal_Logo_Icon_2014.svg/1200px-PayPal_Logo_Icon_2014.svg.png"
+                            alt="PayPal" class="h-8 ">
+                        <span>PayPal</span>
+                    </div>
+                    <div
+                        class="payment-option p-4 rounded-lg border border-white/10 cursor-pointer flex flex-col items-center justify-center text-gray-300 hover:text-white transition-all">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/1200px-Bitcoin.svg.png"
+                            alt="Cryptocurrency" class="h-8 ">
+                        <span>Crypto</span>
+                    </div>
+                    <div
+                        class="payment-option p-4 rounded-lg border border-white/10 cursor-pointer flex flex-col items-center justify-center text-gray-300 hover:text-white transition-all">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/UPI-Logo-vector.svg/1200px-UPI-Logo-vector.svg.png"
+                            alt="UPI" class="h-8 ">
+                        <span>UPI</span>
+                    </div>
+                </div>
+                <form class="space-y-4">
+                    <input type="number" placeholder="Enter Amount"
+                        class="w-full p-3 rounded-lg bg-white/10 border border-white/10 text-white placeholder-gray-400 focus:outline-none focus:border-red-500">
+                    <button type="submit"
+                        class="w-full bg-red-600 hover:bg-red-700 text-white font-semibold px-6 py-3 rounded-lg transition-all">
+                        Donate Now
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-gray-900" id="team">
+        <div class="container mx-auto px-4 md:px-6">
+            <h2 class="text-3xl md:text-4xl font-semibold text-white text-center mb-12">
+                Our Team
+            </h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div
+                    class="bg-white/5 backdrop-blur-md rounded-lg shadow-md p-6 flex flex-col items-center text-center border border-white/10 fade-in-up">
+                    <img src="https://placehold.co/200x200/EEE/31343C?text=John+Doe&font=Montserrat" alt="John Doe"
+                        class="w-32 h-32 rounded-full mb-4">
+                    <h3 class="text-xl font-semibold text-white mb-2">John Doe</h3>
+                    <p class="text-gray-300 mb-4">Founder & CEO</p>
+                    <p class="text-gray-300">
+                        John is passionate about humanitarian work and has led Agapao Mission since its inception.
+                    </p>
+                </div>
+                <div class="bg-white/5 backdrop-blur-md rounded-lg shadow-md p-6 flex flex-col items-center text-center border border-white/10 fade-in-up"
+                    style="animation-delay: 0.2s;">
+                    <img src="https://placehold.co/200x200/EEE/31343C?text=Jane+Smith&font=Montserrat" alt="Jane Smith"
+                        class="w-32 h-32 rounded-full mb-4">
+                    <h3 class="text-xl font-semibold text-white mb-2">Jane Smith</h3>
+                    <p class="text-gray-300 mb-4">Program Director</p>
+                    <p class="text-gray-300">
+                        Jane oversees the implementation of all programs and ensures their success.
+                    </p>
+                </div>
+                <div class="bg-white/5 backdrop-blur-md rounded-lg shadow-md p-6 flex flex-col items-center text-center border border-white/10 fade-in-up"
+                    style="animation-delay: 0.4s;">
+                    <img src="https://placehold.co/200x200/EEE/31343C?text=Michael+Brown&font=Montserrat"
+                        alt="Michael Brown" class="w-32 h-32 rounded-full mb-4">
+                    <h3 class="text-xl font-semibold text-white mb-2">Michael Brown</h3>
+                    <p class="text-gray-300 mb-4">Finance Manager</p>
+                    <p class="text-gray-300">
+                        Michael manages the organization's finances and ensures transparency.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-8 bg-gray-950">
+        <div class="container mx-auto px-4 md:px-6 text-center">
+            <p class="text-gray-300">&copy; 2025 Agapao Mission. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript for sliding hero images
+        const heroImages = document.querySelectorAll('.hero-image');
+        let currentImageIndex = 0;
+
+        function showNextImage() {
+            heroImages[currentImageIndex].classList.remove('active');
+            currentImageIndex = (currentImageIndex + 1) % heroImages.length;
+            heroImages[currentImageIndex].classList.add('active');
+        }
+
+        setInterval(showNextImage, 5000);
+
+        // JavaScript for smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // JavaScript for mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+
+</html>

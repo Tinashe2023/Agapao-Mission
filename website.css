@@ -1,0 +1,415 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Large Header with Blurred Background */
+.header {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+.header-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('C:/Users/TinasheHando/Downloads/Agapao Mission/ZSE[2018].jpeg') no-repeat center center/cover;
+    filter: blur(2px);
+    z-index: -1;
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    /* Dark overlay */
+    z-index: -1;
+}
+
+.header-content {
+    z-index: 1;
+}
+
+.header-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.header-content p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+/* Navigation Bar */
+.navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.5);
+    /* Semi-transparent background */
+    z-index: 2;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+}
+
+.navbar-nav {
+    list-style: none;
+    display: flex;
+}
+
+.navbar-nav li {
+    margin-left: 1rem;
+}
+
+.navbar-nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+/* Calendar Section */
+#calendar {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.calendar-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.calendar-controls button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: hsl(78, 84%, 42%);
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.5rem;
+}
+
+.calendar-day {
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.calendar-day:hover {
+    background-color: #f4f4f4;
+}
+
+.calendar-day.holiday {
+    background-color: #ff6f61;
+    color: white;
+    font-weight: bold;
+}
+
+.calendar-day.empty {
+    background-color: #f9f9f9;
+    border: none;
+    cursor: default;
+}
+
+
+/* Hero Section */
+.hero {
+    background: url("C:/Users/TinasheHando/Downloads/Agapao Mission/togetherness.jpeg") no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.btn {
+    background-color: #ff6f61;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+/* Container */
+.container {
+    padding: 2rem;
+    text-align: left;
+}
+
+/* Campaigns Section */
+.campaign-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+}
+
+.campaign-card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    text-align: center;
+}
+
+
+
+.campaign-card h3 {
+    margin: 1rem 0 0.5rem;
+    font-size: 1.5rem;
+
+    .campaign-card p {
+        padding: 0 1rem 1rem;
+        color: #555;
+    }
+}
+
+/* Campaign Cards */
+.campaign-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+}
+
+.campaign-card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    text-align: center;
+}
+
+/* Slideshow Container */
+.slideshow {
+    position: relative;
+    height: 200px;
+    /* Fixed height for slideshow */
+    overflow: hidden;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+/* Testimonials Section */
+.testimonial-slider {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.testimonial {
+    display: none;
+    text-align: center;
+}
+
+.testimonial.active {
+    display: block;
+}
+
+.testimonial-slider button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.testimonial-slider .prev {
+    left: 0;
+}
+
+.testimonial-slider .next {
+    right: 0;
+}
+
+/* Donation Section */
+#donate {
+    text-align: center;
+    padding: 3rem 0;
+}
+
+#donate h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+#donate p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+#donation-form {
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+#donation-form label {
+    display: block;
+    margin: 0.5rem 0 0.25rem;
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+#donation-form input {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+#donation-form input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.payment-methods {
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.payment-methods label {
+    margin-right: 1rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: auto;
+}
+
+.payment-methods label img {
+    height: 2rem;
+}
+
+.hidden {
+    display: none;
+}
+
+.payment-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+    margin-bottom: 0.5rem;
+}
+
+.payment-option:hover {
+    border-color: hsl(38, 53%, 46%);
+    background-color: #fef08a;
+}
+
+.payment-option.selected {
+    background-color: #fef08a;
+    border-color: #f59e0b;
+    box-shadow: 0 0 5px hsl(19, 66%, 36%);
+}
+
+/* Ensure images don't overflow their container */
+img {
+    max-width: 100%;
+    /* Important: Prevent images from being too large */
+    height: auto;
+}
+
+.payment-option img {
+    height: 2rem;
+    /* Adjust as needed, but ensure it's controlled */
+    margin-bottom: 0.5rem;
+}
+
+/* Footer */
+.footer {
+    background-color: #333;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+.footer-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.footer-links li {
+    margin: 0 1rem;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+}

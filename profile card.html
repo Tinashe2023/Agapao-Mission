@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tinashe Hando Card</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="profile card.css">
+</head>
+
+<body class="bg-gray-100">
+    <div class="card">
+        <div id="card">Hie</div>
+        <div class="flex items-center space-x-4">
+            <img src="C:/Users/TinasheHando/Pictures/Family&friends/@Nyoniforex739📈📉 20230326_181832.jpg"
+                alt="Profile" class="w-16 h-16 rounded-full">
+
+            <div class="flex flex-col space-y-2">
+                <div class="bg-gray-200 rounded-md p-2 text-center text-sm font-medium">Tinashe</div>
+                <div class="bg-gray-200 rounded-md p-2 text-center text-sm font-medium">INT219</div>
+            </div>
+        </div>
+        <button class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer"
+            id="like-button">Like</button>
+
+    </div>
+    <script>
+        const likeButton = document.getElementById('like-button');
+
+        likeButton.addEventListener('click', () => {
+            alert('Liked!');
+            likeButton.disabled = true;
+            likeButton.innerText = 'Liked!';
+            likeButton.classList.remove('bg-blue-500', 'hover:bg-blue-700', 'cursor-pointer');
+            likeButton.classList.add('bg-gray-400', 'disabled');
+        });
+        const toggleButton = document.getElementById('darkmodetoggle');
+
+        function toggleDarkMode() {
+            const body = document.body;
+            body.classList.toggle('dark-mode');
+
+
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        }
+
+        window.onload = function () {
+            if (localStorage.getItem('darkMode') === 'enabled') {
+                document.body.classList.add('dark-mode');
+            }
+        };
+
+
+    </script>
+</body>
+
+</html>
