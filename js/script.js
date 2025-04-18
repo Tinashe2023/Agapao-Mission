@@ -27,9 +27,9 @@ document.addEventListener('DOMContentLoaded', () => {
             '2025-04-24': 'Lecture Day',
         },
         images: [
-            'C:/Users/TinasheHando/Documents/Agapao Mission/happy together.jpeg',
-            'C:/Users/TinasheHando/Documents/Agapao Mission/Volunteer in Kenya with IVHQ - Lowest Fees & #1 Rated Projects.jpeg',
-            'C:/Users/TinasheHando/Documents/Agapao Mission/Donations[World].jpeg'
+            'images/happy together.jpeg',
+            'images/Volunteer in Kenya with IVHQ - Lowest Fees & #1 Rated Projects.jpeg',
+            'images/Donations[World].jpeg'
         ]
     };
 
